@@ -1,14 +1,14 @@
 # Git for Strategy — Project Status
 
 **Last Updated:** 2026-02-17
-**Phase:** v1.0.0 Ready for Publishing
+**Phase:** v1.0.0 Released
 **Health:** Green
 
 ---
 
 ## Current State
 
-GitForStrategy is a fully built, shippable plugin with 21 skills, 7 commands, 8 templates, 13 seed patches, and setup guides for 6 platforms. Ready to push to GitHub.
+GitForStrategy is a fully built, shippable plugin with 21 skills, 7 commands, 8 templates, 13 seed patches, and setup guides for 6 platforms. Released and pushed to GitHub.
 
 ### What's Done
 
@@ -23,14 +23,14 @@ GitForStrategy is a fully built, shippable plugin with 21 skills, 7 commands, 8 
 - Problem-first README with install, pipeline, examples, comparison
 - Plugin manifest (.claude-plugin/plugin.json)
 - CONTRIBUTING.md, CHANGELOG.md, MIT LICENSE
+- GitHub repository created and v1.0.0 tagged and pushed
 
 ### What Cruz Needs To Do
 
-1. Create GitHub repo (or push to existing)
-2. Fill in GitHub description field
-3. Add topics/tags
-4. Generate and add hero image
-5. Pin on profile
+1. Fill in GitHub description field
+2. Add topics/tags
+3. Generate and add hero image
+4. Pin on profile
 
 ---
 
