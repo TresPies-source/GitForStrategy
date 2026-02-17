@@ -1,0 +1,26 @@
+{
+  "name": "git-for-strategy",
+  "version": "1.0.0",
+  "description": "Strategic thinking as installable infrastructure — 21 skills, 13 seed patterns, 5-phase pipeline. Give your AI agent the discipline to explore, decide, execute, track, and learn.",
+  "author": {
+    "name": "Tres Pies Design",
+    "email": "cruz@trespiesdesign.com"
+  },
+  "metadata": {
+    "homepage": "https://github.com/TresPies-source/GitForStrategy",
+    "repository": "https://github.com/TresPies-source/GitForStrategy",
+    "keywords": [
+      "strategic-thinking",
+      "ai-strategy",
+      "ai-agents",
+      "planning-with-files",
+      "mcp",
+      "methodology",
+      "decision-making",
+      "ai-workflow",
+      "specification",
+      "retrospective",
+      "seed-patterns"
+    ]
+  }
+}
