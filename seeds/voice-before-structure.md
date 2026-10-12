@@ -1,21 +1,42 @@
-# Seed: Voice Before Structure
+---
+name: voice-before-structure
+tagline: Read the project's voice before you fill in its templates.
+group: foundations
+triggers:
+  - fill in this template
+  - write the spec
+  - draft the docs
+  - new project
+  - this doesn't feel right
+---
 
-**Confidence:** High — consistently validated
+# Voice Before Structure
 
-## Trigger
-When creating artifacts (specs, docs, code) for a project. When templates feel like fill-in-the-blank exercises.
+*Read the project's voice before you fill in its templates.*
 
-## Pattern
-Read the project's philosophy and voice before writing structural artifacts. Grounding transforms boilerplate into identity. A spec written in the project's voice is more coherent and more likely to be followed.
+## What it is
 
-## Steps
-1. Read the project's README, philosophy docs, and existing artifacts
-2. Absorb the tone, vocabulary, and values
-3. Write your artifact in that voice
-4. The structure emerges from the voice, not the other way around
+Before writing structural artifacts for a project — specs, docs, plans — read its philosophy, its README, and its best existing work. The structure grows out of the voice, not the other way around.
 
-## Evidence
-Specs and docs written after reading project philosophy had 3x fewer "this doesn't feel right" revisions from stakeholders.
+## Why it matters
 
-## Anti-Pattern
-Template-first writing — filling in sections without understanding the project's identity. Produces technically correct but spiritually empty artifacts.
+Structure without voice is generic cargo. A spec written in the project's own voice is more coherent, and more likely to be followed by the people who live with it.
+
+## The pattern
+
+1. Read the README, the philosophy, and the strongest existing artifacts.
+2. Note the vocabulary, the tone, and what the project refuses to do.
+3. Write in that voice.
+4. Let the template's sections serve the voice, not replace it.
+
+## Revisit when
+
+You start an artifact for a project you have not written for. A reviewer says "technically right, but it doesn't sound like us."
+
+## What it refuses
+
+Template-first writing: filling in sections without understanding the project's identity. It produces artifacts that are correct and empty.
+
+## Grew from
+
+A mid-sprint correction in the Dojo Genesis practice, February 2026, after templated artifacts kept coming back as "not us."

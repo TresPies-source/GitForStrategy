@@ -1,21 +1,42 @@
-# Seed: Pace of Understanding
+---
+name: pace-of-understanding
+tagline: Work at the pace of understanding, not the pace of expectation.
+group: foundations
+triggers:
+  - we need to ship faster
+  - just ship it
+  - no time to understand
+  - skip the research
+  - deadline pressure
+---
 
-**Confidence:** High — core philosophy
+# Pace of Understanding
 
-## Trigger
-When there's pressure to deliver before understanding. When "just ship it" feels wrong but you can't articulate why.
+*Work at the pace of understanding, not the pace of expectation.*
 
-## Pattern
-Work at the pace of understanding, not the pace of expectation. The time spent understanding is not overhead — it IS the work. Rushing past understanding produces artifacts that need to be redone.
+## What it is
 
-## Steps
-1. Notice the urge to skip ahead
-2. Name what you don't yet understand
-3. Invest time in understanding before producing
-4. The artifact that emerges from understanding is higher quality AND faster to produce
+Time spent understanding is not overhead before the work. It is the work. What gets produced past the edge of understanding comes back for revision.
 
-## Evidence
-Research-before-spec pattern: specs grounded in deep research required 60% fewer revisions than specs written under time pressure.
+## Why it matters
 
-## Anti-Pattern
-Speed theater — producing artifacts quickly that need multiple revision cycles. The total time is longer, and the quality is lower.
+Rushing past understanding produces work that looks finished and is not. In this practice's experience — observed, not measured — the revisions that follow cost more than the understanding would have.
+
+## The pattern
+
+1. Notice the urge to skip ahead.
+2. Name, specifically, what you do not yet understand.
+3. Spend time there before producing anything.
+4. Produce from understanding.
+
+## Revisit when
+
+Someone says "just ship it" and it feels wrong but you cannot say why. A draft is on its third rewrite.
+
+## What it refuses
+
+Speed theater: producing artifacts quickly that need several rounds of revision. It also refuses the opposite: using understanding as a reason never to ship.
+
+## Grew from
+
+The patient-learning practice in the Dojo Genesis lineage: "Progress is measured by understanding, not coverage."

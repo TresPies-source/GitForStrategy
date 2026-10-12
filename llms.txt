@@ -1,0 +1,31 @@
+# Git for Strategy
+
+> A file contract for strategic work: scouts, decisions with rulings in the decider's own words, specs, commissions, retros, and seeds, kept in plain markdown inside a repository. Part of Dojo Genesis.
+
+## What this is
+
+- The contract: SPEC.md — seven invariants, the artifact types with their folders, names, headers, required sections, and status values, the lifecycle, pipeline health, the pre-commission gate, and conformance levels.
+- The reference implementation: scripts/gfs.py (Python 3.9+, standard library only) — init, new, validate, status, gate, seeds.
+- A Claude Code plugin: commands /scout, /decide, /spec, /commission, /retro, /status, /seed, /close, and a session-start status note.
+- Seeds: reusable patterns from real work, in seeds/.
+- It is not a runtime, a memory system, or a coordination protocol, and it ships no practice skills; those live in the Dojo Genesis library.
+
+## Install
+
+- Claude Code: clone the repository, then `claude --plugin-dir <path>`.
+- Start a workspace: `python3 scripts/gfs.py init` (or `--root strategy`), then add `@STRATEGY.md` to CLAUDE.md.
+- Any other agent: point AGENTS.md or the tool's rules file at STRATEGY.md and use scripts/gfs.py.
+
+## How to use with LLMs
+
+- Read STRATEGY.md in the workspace first.
+- Create artifacts with `gfs.py new <type> "<title>"`; run `gfs.py validate` before calling the work done.
+- The person makes the calls. Record rulings in their own words; leave Status at Proposed until they rule.
+- No number without a source; otherwise write "not measured."
+
+## Links
+
+- [SPEC.md](https://github.com/DojoGenesis/git-for-strategy/blob/main/SPEC.md)
+- [Seeds](https://github.com/DojoGenesis/git-for-strategy/blob/main/seeds/README.md)
+- [Adapters](https://github.com/DojoGenesis/git-for-strategy/blob/main/docs/adapters.md)
+- [Dojo Genesis plugins](https://github.com/DojoGenesis/plugins)

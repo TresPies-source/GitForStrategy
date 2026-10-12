@@ -1,40 +1,43 @@
-# Contributing to Git for Strategy
+# Contributing
 
-Thanks for your interest in contributing. This project grows through real use — every seed, skill, and template here came from measured production experience.
+*Grounded in experience, written in plain words, checked before it merges.*
 
-## Ways to Contribute
+## Seeds
 
-### Add a Seed
-If you've discovered a reusable thinking pattern through your own work:
-1. Use `templates/seed_template.md` as your starting point
-2. Include a clear trigger (when to apply), steps (how), and evidence (where it worked)
-3. Save to `seeds/` and submit a PR
+A seed comes from real work, not theory. "I think this would help" is not enough; "this happened on a project, and here is what we learned" is.
 
-Seeds must be grounded in experience. "I think this would work" isn't enough — we need "I used this on project X and it produced Y."
+1. Run `python3 scripts/gfs.py new seed "Name of the pattern"` from a workspace, or copy `templates/seed.md` into `seeds/`.
+2. Fill in every section. Grew from says where the pattern came from — the project or retro, and when — and cites any published source.
+3. No numbers without a source. If the effect was not measured, say so.
+4. Run `python3 scripts/gfs.py seeds index --write --plugin` to update the index of the seeds that ship here.
 
-### Add a Platform Setup Guide
-If you use Git for Strategy on a platform we haven't documented:
-1. Follow the pattern in `setup/` — quick install, verification, workspace init, usage tips
-2. Test the setup yourself before submitting
+## The contract
 
-### Improve a Skill
-Skills in `skills/` are living documents. If you find a step that's unclear or a workflow that could be improved:
-1. Open an issue describing what's unclear
-2. If you have a fix, submit a PR with before/after reasoning
+Changes to `SPEC.md` start the way any decision does here: a scout and a decision record in this repository's own workspace, `strategy/`. A change that adds optional fields, sections, or types is a minor version. A change to what is required is a major version. Update `scripts/gfs.py`, the templates, and the tests in the same pull request as the spec.
 
-### Report Measured Outcomes
-If you use Git for Strategy and track your results, we'd love to include your data in `docs/measured-outcomes.md`. Open an issue with:
-- What you measured
-- How you measured it
-- What you found (positive or negative)
+## The script and the commands
 
-## Guidelines
+`scripts/gfs.py` uses the Python standard library only and runs on Python 3.9 or later. Add a test in `tests/` for any behavior you change. Commands that create artifacts write through `gfs.py` and validate what they write; keep it that way.
 
-- Ground everything in experience, not theory
-- Keep language concrete and ordinary
-- Test your contributions before submitting
-- One PR per contribution (don't bundle unrelated changes)
+## Before you open a pull request
+
+```bash
+python3 -m unittest discover -s tests
+python3 scripts/gfs.py selfcheck
+python3 scripts/gfs.py validate --strict
+python3 scripts/gfs.py validate --root examples/native-or-web --strict
+```
+
+CI runs the same checks.
+
+## Writing
+
+Plain, calm, concrete. Address the reader as "you." Short declarative sentences. No hype words, no emoji, no exclamation marks. Every number has a source, or the text says *not measured*.
+
+## AI assistance
+
+If AI tools helped write a contribution, say so in the pull request.
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+This project is licensed under Apache-2.0. Under section 5 of that license, a contribution you submit is licensed under the same terms.

@@ -1,22 +1,43 @@
-# Seed: Era Architecture
+---
+name: era-architecture
+tagline: Group releases into eras that share constraints and vocabulary.
+group: structure
+triggers:
+  - plan the next three releases
+  - roadmap
+  - long-term vision
+  - releases feel disconnected
+  - multi-release
+---
 
-**Confidence:** Medium — emerging pattern
+# Era Architecture
 
-## Trigger
-When planning work that spans multiple releases. When individual releases feel disconnected from a larger vision.
+*Group releases into eras that share constraints and vocabulary.*
 
-## Pattern
-Group releases into eras with shared vocabulary, architectural constraints, and design language. An era is a conceptual container that gives coherence to 3-5 releases that share a theme.
+## What it is
 
-## Steps
-1. Name the era (what's the unifying theme?)
-2. Define architectural constraints (what's true for ALL releases in this era?)
-3. Define shared vocabulary (what do terms mean in this era?)
-4. Plan individual releases within the era's constraints
-5. Transition explicitly between eras
+An era is a container for a handful of releases that share a theme, a set of architectural constraints, and a vocabulary.
 
-## Evidence
-Dojo Genesis eras: Foundation (v0.0.1-v0.0.10), Cultivation (v0.0.11-v0.0.16), Harvest (v0.0.17-v0.0.23). Each era had distinct architectural patterns that kept releases coherent.
+## Why it matters
 
-## Anti-Pattern
-Release soup — each release is an island with no shared context. Or eternal era — never transitioning, which prevents evolution.
+Without eras, each release is an island and the larger direction breaks apart. With an era that never ends, nothing is allowed to change.
+
+## The pattern
+
+1. Name the era's theme.
+2. State the constraints that hold for every release in it.
+3. Define the shared vocabulary.
+4. Plan each release inside those constraints.
+5. End the era on purpose, with a retro, before starting the next.
+
+## Revisit when
+
+You plan beyond the next release. A release contradicts the one before it.
+
+## What it refuses
+
+Release soup, where each release stands alone. And the eternal era, which never transitions.
+
+## Grew from
+
+The early release history of Dojo Genesis, which moved through named eras — foundation, cultivation, harvest — before it took its current form.

@@ -1,38 +1,14 @@
 ---
-name: status
-description: Show current pipeline state — what phase you're in, what's current, what's stale.
+description: "Show where the strategy pipeline stands, what is stale, and what needs attention. Counts come from disk, not memory."
+argument-hint: "[--root DIR]"
+allowed-tools: Read, Edit, Glob, Grep, Bash(python3:*)
 ---
 
-# /status
+!`python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" status $ARGUMENTS 2>&1 || true`
 
-Show or update pipeline status. This is the connective tissue of the Git for Strategy pipeline.
+The report above came from the files on disk. Use its numbers; do not restate counts from memory.
 
-## What This Does
-
-1. Read the current STATUS.md (or create one if it doesn't exist)
-2. Scan the pipeline directories (scouts/, specs/, commissions/, retros/) for artifacts
-3. Show what phase is active, what's current, what's stale
-4. Optionally update the status with new information
-
-## How to Start
-
-If STATUS.md exists, read it and present the current state.
-If not, create one using `skills/track/status-writing/SKILL.md`.
-
-Use status-template from `skills/track/status-template/SKILL.md` for comprehensive status documents.
-Use repo-status from `skills/track/repo-status/SKILL.md` when a codebase overview is needed.
-
-## Output
-
-An updated STATUS.md at the project root showing:
-- Current pipeline phase (Explore / Decide / Execute / Learn)
-- Active artifacts and their dates
-- Stale items (scouts older than 1 week without a spec, etc.)
-- Open questions and blockers
-
-## Pipeline Health Indicators
-
-- **Healthy:** Each phase has recent artifacts, pipeline is flowing
-- **Stale:** Scout exists but no spec after 1 week
-- **Blocked:** Spec exists but commission failed pre-flight
-- **Overdue:** Implementation shipped but no retro after 2 weeks
+1. If it says there is no workspace, offer to create one with `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" init`, and ask first.
+2. Summarize in plain words: which phase the work is in, what is stale, and each item under "Needs attention" with the move that would resolve it.
+3. Run `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" validate` and report any errors alongside the status.
+4. Offer to update the Where we are section of `STATUS.md`. Write it only if the person says yes, and keep it a pointer to the record, not a snapshot of counts.

@@ -1,28 +1,42 @@
-# Seed: Spec-to-Prompt Pipeline
+---
+name: spec-to-prompt-pipeline
+tagline: A spec is not a build brief. Translate it, and check readiness first.
+group: structure
+triggers:
+  - let's just build it
+  - hand this to an agent
+  - turn the spec into tasks
+  - commission
+  - implementation prompt
+---
 
-**Confidence:** High — core workflow pattern
+# Spec-to-Prompt Pipeline
 
-## Trigger
-When moving from specification to implementation. When handing work to autonomous agents.
+*A spec is not a build brief. Translate it, and check readiness first.*
 
-## Pattern
-A specification is not an implementation prompt. The pipeline:
-1. Scout (explore the space)
-2. Spec (commit to a direction)
-3. Pre-flight (verify readiness)
-4. Prompt (transform spec into self-contained commission)
-5. Commission (hand off to implementing agent)
+## What it is
 
-Each step produces a persistent artifact. Skipping steps produces implementations that drift from intent.
+Between an accepted spec and the build sits a translation: a self-contained commission that opens with a pre-flight. Scout, decide, spec, gate, commission — each one a file.
 
-## Steps
-1. Write the spec (using /spec)
-2. Run pre-flight checklist (catches 80% of integration issues)
-3. Transform to implementation prompt (make it self-contained)
-4. Commission the agent (with clear handoff package)
+## Why it matters
 
-## Evidence
-77 hours saved through pre-flight verification alone. Specs that went through the full pipeline had 40-50% shorter implementation timelines.
+A builder handed a spec interprets it, and the gaps fill with plausible guesses. A commission leaves less room for interpretation, and its pre-flight stops the work when grounding is missing.
 
-## Anti-Pattern
-Spec-to-code — skipping the prompt transformation. The agent interprets the spec differently than intended, causing rework.
+## The pattern
+
+1. Write the spec from an accepted decision.
+2. Run the pre-commission gate.
+3. Write the commission: context, requirements, file manifest, binary success criteria, non-goals.
+4. Open it with a pre-flight that stops the build on any failed check.
+
+## Revisit when
+
+Work is about to go to an autonomous builder.
+
+## What it refuses
+
+Spec-to-code: skipping the translation and hoping the builder reads the spec the way you meant it.
+
+## Grew from
+
+The scout, spec, and commission pipeline as practiced across Dojo Genesis releases. Timeline claims once attached to this seed were never measured against a baseline; they have been removed.

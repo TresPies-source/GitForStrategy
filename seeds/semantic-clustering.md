@@ -1,21 +1,42 @@
-# Seed: Semantic Clustering
+---
+name: semantic-clustering
+tagline: Map what a system does, not where its files live.
+group: structure
+triggers:
+  - what does this system do
+  - understand the codebase
+  - architecture map
+  - capabilities
+  - where does this live
+---
 
-**Confidence:** High — validated in codebase analysis
+# Semantic Clustering
 
-## Trigger
-When you need to understand what a system does. When file structure doesn't reveal behavior.
+*Map what a system does, not where its files live.*
 
-## Pattern
-Map system capabilities using action-verb clusters that group components by what they DO, not where they live. "Authenticates users" is a cluster that might span 5 directories. This reveals capabilities, gaps, and architectural confusion that file trees hide.
+## What it is
 
-## Steps
-1. List every action the system performs (use verbs)
-2. Group actions into clusters (authentication, data processing, etc.)
-3. Map files to clusters (a file can belong to multiple clusters)
-4. Identify gaps (clusters with no files) and confusion (files in wrong clusters)
+Group a system's parts by the actions they perform — verb clusters such as "authenticates users" — instead of by directory.
 
-## Evidence
-Semantic clustering of a 83,000-line codebase revealed 3 capability gaps invisible in the file tree.
+## Why it matters
 
-## Anti-Pattern
-File-tree thinking — assuming directory structure = system architecture. It often doesn't.
+File trees hide behavior. One capability can span five directories; one directory can hold three unrelated capabilities. Clustering by action shows the gaps and the confusion that the tree conceals.
+
+## The pattern
+
+1. List every action the system performs, as verbs.
+2. Group the actions into clusters.
+3. Map files to clusters. A file may belong to several.
+4. Note clusters with no files (gaps) and files with no clear cluster (confusion).
+
+## Revisit when
+
+You are about to write the current-state section of a spec. You are new to a system.
+
+## What it refuses
+
+Treating the directory tree as the architecture.
+
+## Grew from
+
+Codebase audits in the Dojo Genesis practice, done before specifying work on existing systems.

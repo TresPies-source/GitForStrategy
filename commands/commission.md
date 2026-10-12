@@ -1,36 +1,18 @@
 ---
-name: commission
-description: Generate implementation prompts from a specification for autonomous agents.
+description: "Turn a Ready spec into a self-contained build brief. Runs the pre-commission gate first and stops if it fails."
+argument-hint: "<spec file>"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash(python3:*)
 ---
 
-# /commission
+Commission the build for: $ARGUMENTS
 
-Commission implementation. This is Phase 3 of the Git for Strategy pipeline.
+1. **Run the gate.** `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" gate <spec file>`. If it fails, stop. Report each failed check and what would fix it. Do not write a commission against a spec that fails the gate. If it passes with a staleness warning, re-check the spec's current state against the repository before going on.
+2. **Create the file.** Run `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" new commission "<short title>"` and link the spec under Related.
+3. **Pre-flight.** List the checks the builder runs before writing anything, each with a command or a place to look: files exist and have been read, dependencies are present, the spec passed its gate. State the stop rule plainly: if any check fails, stop and report.
+4. **Context.** Decisions already made, with links, and what already exists in the repository.
+5. **Requirements and file manifest.** What to read, modify, and create, and why for each.
+6. **Success criteria.** Carry the spec's binary criteria over, and add any the build needs.
+7. **Constraints and non-goals**, then **Done when**: what the builder hands back — what ran, what passed, where to look.
+8. **Check your work.** Run `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" validate`. Set Status to Ready when the person agrees, and to Out when the build starts.
 
-## What This Does
-
-1. Take a completed specification (from `/spec` output)
-2. Run the pre-implementation checklist to verify readiness
-3. Transform the spec into structured, self-contained implementation prompts
-4. Optionally split into parallel tracks for concurrent execution
-5. Save prompts to `commissions/`
-
-## How to Start
-
-Ask the user: **"Which spec are we commissioning? Point me to a spec document."**
-
-Then:
-1. Run pre-implementation-checklist from `skills/execute/pre-implementation-checklist/SKILL.md`
-2. If the checklist passes, run implementation-prompt from `skills/execute/implementation-prompt/SKILL.md`
-3. If the work can be parallelized, use parallel-tracks from `skills/execute/parallel-tracks/SKILL.md`
-
-## Output
-
-Implementation prompts saved to `commissions/{spec-name}/` using the template in `templates/commission_template.md`.
-
-## After Commissioning
-
-Suggest next steps:
-- Hand off to implementation agents (use handoff-protocol if needed)
-- `/status` to update pipeline state
-- After implementation completes: `/retro`
+Building happens outside this contract, with whatever tools you use. If the Dojo Genesis `specification-driven-development` plugin is installed, its `implementation-prompt`, `pre-implementation-checklist`, and `parallel-tracks` skills cover the brief in depth.

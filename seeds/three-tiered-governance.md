@@ -1,27 +1,47 @@
-# Seed: Three-Tiered Governance
+---
+name: three-tiered-governance
+tagline: Principles constrain protocols. Protocols enable practices. Practices test principles.
+group: structure
+triggers:
+  - we need more structure
+  - governance
+  - move fast or keep quality
+  - too many rules
+  - the team is growing
+  - process
+---
 
-**Confidence:** High — validated across 25 releases
+# Three-Tiered Governance
 
-## Trigger
-When adding structure to a project, team, or system. When "move fast" and "maintain quality" feel like opposites.
+*Principles constrain protocols. Protocols enable practices. Practices test principles.*
 
-## Pattern
-Organize governance into three tiers that multiply each other:
+## What it is
 
-1. **Principles** — Why we do things this way (rarely changes)
-2. **Protocols** — How we do things (changes per era)
-3. **Practices** — What we do day-to-day (changes per sprint)
+Governance in three tiers that change at different speeds:
 
-Principles constrain protocols. Protocols enable practices. Practices generate evidence that refines principles.
+- **Principles** — why we work this way. They rarely change.
+- **Protocols** — how we work. They change from era to era.
+- **Practices** — what we do day to day. They change often.
 
-## Steps
-1. Identify the governing principle (what's the non-negotiable?)
-2. Design protocols that embody the principle
-3. Let practices emerge from protocols
-4. Measure outcomes to validate the principle
+## Why it matters
 
-## Evidence
-Dojo Genesis: 7 plugins, 49 skills, zero governance overhead. The three tiers (philosophy → plugin structure → individual skills) kept the system coherent as it grew 10x.
+Flat governance fails in both directions. When everything is a principle, the system is rigid. When everything is a practice, it is chaos. Tiers let structure speed work up instead of slowing it down. The practice's phrase for this is "governance multiplies velocity" — a claim from experience, not measured.
 
-## Anti-Pattern
-Flat governance — all rules at one level. Either too rigid (everything is a principle) or too chaotic (everything is a practice).
+## The pattern
+
+1. Name the principle that is not negotiable.
+2. Design protocols that embody it.
+3. Let practices grow out of the protocols.
+4. Use what practice shows you to revise protocols, and, rarely, principles.
+
+## Revisit when
+
+You are adding process to a project or team. A rule is being argued as if it were a principle.
+
+## What it refuses
+
+The false choice between speed and governance.
+
+## Grew from
+
+The Dojo Genesis seed library, January 2026, which adapted a strategic, tactical, and operational governance framework from Dataiku's research on governing AI. The specific publication was not recorded.

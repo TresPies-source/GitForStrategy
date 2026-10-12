@@ -1,35 +1,18 @@
 ---
-name: retro
-description: Run a structured retrospective on completed work — harvest learnings and extract seeds.
+description: "Run a retrospective on a closed stretch of work: what went well, what was hard, what to change, the seeds it grew, and actions that carry forward."
+argument-hint: "<the work or period to look back on>"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash(python3:*)
 ---
 
-# /retro
+Run a retro on: $ARGUMENTS
 
-Run a retrospective. This is Phase 4 of the Git for Strategy pipeline.
+1. **Check the period is closed.** A retro covers work that shipped or was abandoned. If the work is still moving, say so and offer `/status` or `/close` instead.
+2. **Create the file.** Run `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" new retro "<short title>"`, fill in Period, and link the commissions, specs, and decisions it covers under Related.
+3. **Gather the record.** Read the linked files and what actually happened in the repository. Use what the record shows, not what anyone remembers.
+4. **Ask before you write.** Ask the person what went well, what was hard, and what they would change. Their account leads; add what the record shows that they did not mention, marked as yours.
+5. **Themes.** Insight, evidence, and the action each one calls for. Every friction point maps to an action.
+6. **Seeds.** Name patterns worth reusing: what was seen, why it matters, when to revisit. For each one the person wants kept, run `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" new seed "<name>"`, fill it in, and say in Grew from that it came from this retro.
+7. **Actions.** At least one carries into the next stretch of work.
+8. **Check your work.** Run `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" validate`. Set Status to Closed when the person agrees.
 
-## What This Does
-
-1. Reflect on completed work: what went well, what was hard, what to change
-2. Extract reusable patterns as seed patches
-3. Compress session context into memory artifacts for future reference
-4. Save the retrospective to `retros/`
-
-## How to Start
-
-Ask the user: **"What work are we reflecting on? Point me to the spec and any implementation notes."**
-
-Then:
-1. Run retrospective from `skills/learn/retrospective/SKILL.md`
-2. If patterns emerge, run seed-extraction from `skills/learn/seed-extraction/SKILL.md`
-3. Optionally compress context using compression-ritual from `skills/learn/compression-ritual/SKILL.md`
-
-## Output
-
-- Retrospective saved to `retros/YYYY-MM-DD-{topic}.md` using template in `templates/retro_template.md`
-- Any extracted seeds saved to `seeds/` using template in `templates/seed_template.md`
-
-## After Retrospective
-
-The pipeline loops back to Explore:
-- `/scout` to begin the next cycle
-- `/status` to update pipeline state
+If the Dojo Genesis `continuous-learning` and `wisdom-garden` plugins are installed, their `retrospective` and `seed-extraction` skills go deeper on technique.

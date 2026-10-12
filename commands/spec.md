@@ -1,33 +1,18 @@
 ---
-name: spec
-description: Write a production-ready specification from a scouted direction.
+description: "Write a spec from an accepted decision, grounded in a measured current state, with binary success criteria and explicit non-goals."
+argument-hint: "<what will be built, or the decision to spec from>"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash(python3:*)
 ---
 
-# /spec
+Write a spec for: $ARGUMENTS
 
-Write a specification. This is Phase 2 of the Git for Strategy pipeline.
+1. **Find the workspace** (`STRATEGY.md` here or in `strategy/`). If there is none, ask before running `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" init`.
+2. **Find the decision.** A spec implements an Accepted decision. If there is none, say so and offer `/decide` first. If the person wants to go ahead anyway, label the spec as exploration in its one-line summary.
+3. **Create the file.** Run `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" new spec "<short title>"` and link the decision under Related.
+4. **Measure the current state.** Read the real repository: the files, counts, and behavior this spec touches. Never spec from documentation alone; where docs and code disagree, record the disagreement. Re-derive every number you write down.
+5. **Write** Problem, Scope (in and out), Design, Non-goals, and Risks. Write each success criterion as a binary checkbox (`- [ ] ...`) that a check can pass or fail.
+6. **Contracts.** If this work has to unblock other work, or meets another piece of work at an interface, write a contract for each meeting point (`gfs.py new contract`) and link it.
+7. **Open questions** go in their own section. Don't resolve them by guessing.
+8. **Check your work.** Run `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" validate`. Set Status to Ready only when the person agrees the spec is ready, then run `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/gfs.py" gate <spec file>` and report the result.
 
-## What This Does
-
-1. Take a scouted direction (from `/scout` output or user input)
-2. Ground the spec in measured reality — existing code, prior decisions, constraints
-3. Write a production-ready specification with clear scope, deliverables, and success criteria
-4. Save the spec to `specs/` with version number
-
-## How to Start
-
-Ask the user: **"Which direction are we specifying? Point me to a scout document or describe the decision."**
-
-Then follow the specification-writer skill in `skills/decide/specification-writer/SKILL.md`.
-
-If the user has uploaded files or wants to plan from existing documents, use context-ingestion from `skills/decide/context-ingestion/SKILL.md`.
-
-## Output
-
-A versioned specification saved to `specs/{name}-v{n}.md` using the template in `templates/spec_template.md`.
-
-## After Specifying
-
-Suggest next steps:
-- `/commission` to generate implementation prompts
-- `/status` to update pipeline state
+If the Dojo Genesis `specification-driven-development` plugin is installed, its `specification-writer` and `codebase-audit-grounding` skills go deeper on technique.

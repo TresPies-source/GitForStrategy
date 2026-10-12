@@ -1,190 +1,118 @@
 # Git for Strategy
 
-**Your AI agent can execute tasks. Can it think strategically?**
+*Decisions are files. Files can be diffed.*
 
-AI agents are great at implementation. Give them a spec, they'll write the code. But strategic work — exploring tensions, weighing tradeoffs, making decisions that hold up three months later — they're terrible at it. They skip exploration, collapse nuance, and produce plans that sound smart but don't survive contact with reality.
+Agents have made building fast. Deciding what to build — and remembering why — still happens in chat threads that end with the session. Git for Strategy keeps that work in your repository: the tension you scouted, the call you made and who made it, the spec, the brief for whoever builds, and what you learned when it shipped.
 
-Git for Strategy fixes this. **21 skills organized into a 5-phase pipeline** that gives your agent the discipline to explore before deciding, decide before building, track where it is, and learn from what it ships.
+It is a contract, not a runtime: a folder layout, a format for each kind of artifact, and seven rules that keep the record honest. [SPEC.md](SPEC.md) is the whole of it. The commands and the script in this repository implement it.
 
-**Measured outcomes from 25 real releases: 40-50% shorter timelines. 77 hours saved through pre-flight verification alone.**
+You bring the perspectives and make the calls. The agent drafts, gathers evidence, synthesizes, and names what comes next. It never writes its own lean down as your ruling.
 
----
+## How it fits Dojo Genesis
 
-## Install (30 seconds)
+Dojo Genesis is a protocol layer for Claude Code. Its suite of plugins aims at build discipline inside Claude Code. Its library holds the practice skills — scouting, specification, retrospectives, seeds.
 
-### Claude Code / Cowork
+Git for Strategy is where that practice lands. The library's skills produce scouts, specs, and retros; this repository gives them one place to live and one format to follow, and checks both. It ships no practice skills of its own. When a library plugin is installed, the commands here point to its skills for technique.
+
+## Install in Claude Code
+
+Git for Strategy is not yet listed in the Dojo Genesis marketplace. Load it from a clone:
+
 ```bash
 git clone https://github.com/DojoGenesis/git-for-strategy.git
-# Add the path to your plugins configuration
+claude --plugin-dir ./git-for-strategy
 ```
 
-### Cursor / VS Code / Windsurf
+Start a workspace in your project — at the root of a repository kept for strategy, or in a `strategy/` folder inside a code repository:
+
 ```bash
-git clone https://github.com/DojoGenesis/git-for-strategy.git
-cp -r git-for-strategy/skills/ ~/.your-editor/skills/
+python3 git-for-strategy/scripts/gfs.py init                  # workspace at the project root
+python3 git-for-strategy/scripts/gfs.py init --root strategy  # or inside strategy/
 ```
 
-> Full setup guides for [Claude Code](setup/claude-code.md) · [Cowork](setup/cowork.md) · [Cursor](setup/cursor.md) · [Windsurf](setup/windsurf.md) · [VS Code](setup/vscode.md) · [Gemini CLI](setup/gemini-cli.md)
+Then add the line `@STRATEGY.md` (or `@strategy/STRATEGY.md`) to your project's `CLAUDE.md`, so every session reads the workspace's front door.
 
-### Initialize a workspace
-```bash
-bash scripts/init-strategy.sh "my-project"
+For the practice skills the commands point to, add the Dojo Genesis marketplace and install the library plugins you want:
+
+```text
+/plugin marketplace add DojoGenesis/plugins
+/plugin install strategic-thinking@dojo-genesis
 ```
 
----
-
-## The Pipeline
+## The pipeline
 
 ```
-EXPLORE  →  DECIDE  →  EXECUTE  →  TRACK  →  LEARN
-  ↑                                              │
-  └──────────────── seeds ────────────────────────┘
+ tension ─▶ scout ─▶ decision ─▶ spec ─▶ commission ─▶ (build) ─▶ retro ─▶ seeds
+               ▲                                                            │
+               └──────────────── seeds inform the next scout ───────────────┘
 ```
 
-**Explore:** Scout tensions, research deeply, explore before committing. `/scout`
-
-**Decide:** Write specs grounded in reality, plan from files not memory. `/spec`
-
-**Execute:** Commission autonomous agents with structured prompts, run parallel tracks, verify before shipping. `/commission`
-
-**Track:** Know where you are in the pipeline, spot stale work, maintain visibility. `/status`
-
-**Learn:** Run retrospectives, extract seeds, compress context for next time. `/retro`
-
-**Seeds:** 13 reusable thinking patterns extracted from 25 real releases. The standard library for strategic thinking. `/seed`
-
----
-
-## Quick Example
-
-```
-You: /scout
-Agent: What tension are you exploring?
-You: We need to decide between building a native app or a web app.
-Agent: [Generates a structured scout with 3-5 routes, tradeoffs,
-        cross-route patterns, and open questions — saved to scouts/]
-
-You: /spec
-Agent: [Takes the scouted direction and writes a production-ready
-        specification — saved to specs/]
-
-You: /commission
-Agent: [Transforms the spec into implementation prompts ready for
-        autonomous execution — saved to commissions/]
-
-You: /status
-Agent: Pipeline: Explore ✅ → Decide ✅ → Execute ✅ → Learn ⏳
-       Commission shipped 2 days ago. Retrospective due.
-
-You: /retro
-Agent: [Runs a structured retrospective, extracts seeds for next time
-        — saved to retros/ and seeds/]
-```
-
----
-
-## What's Inside
-
-### 21 Skills Across 6 Layers
-
-| Phase | Skills | What You Get |
-|-------|--------|--------------|
-| **Explore** | 5 | Strategic scouting, iterative reframing, product positioning, deep/wide research, project exploration |
-| **Decide** | 4 | Specification writing, context ingestion, frontend-from-backend grounding, file-based planning |
-| **Execute** | 4 | Implementation prompts, parallel tracks, pre-flight checklists, agent handoffs |
-| **Track** | 3 | Status writing, status templates, repo-level status and health |
-| **Learn** | 4 | Retrospectives, seed extraction, memory garden, context compression |
-| **Patterns** | 1 | 13 seed patches — the standard library for strategic thinking |
-
-### Plus
-
-- **7 commands:** `/scout`, `/spec`, `/commission`, `/retro`, `/seed`, `/status`, `/explore`
-- **8 templates:** Scout, spec, commission, retro, seed, status, handoff, checklist
-- **4 scripts:** Workspace initialization, pipeline validation, seed suggestion, context compression
-- **13 seed patches:** Reusable thinking patterns with triggers, steps, and evidence
-- **6 platform guides:** Claude Code, Cowork, Cursor, Windsurf, VS Code, Gemini CLI
-- **3 hooks:** Pre-scout validation, post-spec pipeline update, pre-commission quality gate
-
----
-
-## The 13 Seeds
-
-Seeds are reusable thinking patterns. Each has a trigger, steps, and evidence from real use.
-
-| Seed | When To Use It |
-|------|---------------|
-| Three-Tiered Governance | Adding structure to a project or team |
-| Pace of Understanding | Pressure to deliver before understanding |
-| Cost Consciousness | Resource constraints feel limiting |
-| Voice Before Structure | Creating artifacts for a project |
-| Liberation Psychology | Barriers prevent contribution |
-| Patient Learning | Learning something new under pressure |
-| Era Architecture | Planning multiple releases |
-| Semantic Clustering | Mapping what a system does |
-| Context Iceberg | Organizing knowledge for retrieval |
-| Spec-to-Prompt Pipeline | Moving from spec to implementation |
-| Portability Tiers | Classifying by dependency depth |
-| Agent Workspace | Coordinating across agents |
-| Handoff Protocol | Passing work between agents |
-
-> Full seed documentation: [seeds/](seeds/)
-
----
-
-## Why Not Just Use Planning-with-Files?
-
-[Planning-with-files](https://github.com/OthmanAdi/planning-with-files) is excellent. It gives your agent memory — three markdown files that persist context across sessions. We recommend it.
-
-Git for Strategy is the next layer. Memory tells your agent *what* it's working on. Strategy tells it *why*, *how to explore alternatives*, *when to commit*, and *what to learn from what it ships*. They're complementary, not competitive.
-
-| | Planning-with-Files | Git for Strategy |
+| Phase | Command | Writes |
 |---|---|---|
-| **Problem solved** | Agents forget context | Agents can't think strategically |
-| **Skills** | ~3 | 21 |
-| **Commands** | 2 | 7 |
-| **Templates** | 3 | 8 |
-| **Seeds/Patterns** | — | 13 |
-| **Measured outcomes** | — | 40-50% timeline reduction |
+| Explore | `/scout` | `scouts/`, and `research/` when evidence is thin |
+| Decide | `/decide` | `decisions/` — the ruling in the decider's own words |
+| Specify | `/spec` | `specs/`, and `contracts/` where pieces of work meet |
+| Commission | `/commission` | `commissions/`, only after the spec passes the gate |
+| Learn | `/retro` | `retros/` and `seeds/` |
+| Any time | `/status`, `/seed`, `/close` | `STATUS.md`, `sessions/` |
 
----
+The contract also defines runbooks, drift audits, and drafts of public copy. [SPEC.md](SPEC.md) lists every type with its folder, name pattern, required sections, and status values.
 
-## Philosophy
+## The rules
 
-**Begin with a tension, not a solution.** The quality of your strategic thinking is determined by the quality of your questions, not the speed of your answers.
+1. Tension before solution.
+2. Files are the record.
+3. The person decides — rulings in their own words.
+4. Decide before you build.
+5. Claims carry their checks.
+6. Supersede, don't rewrite.
+7. Close the loop.
 
-**Knowledge should compound, not evaporate.** Every retrospective produces seeds. Every seed makes the next project better. The system improves with use.
+Each is spelled out in [SPEC.md](SPEC.md#invariants).
 
-**Governance multiplies velocity.** Structure isn't bureaucracy. Scout before deciding, spec before building, retro before starting over. The right constraints make you faster, not slower.
+## The script
 
----
+`scripts/gfs.py` is the reference implementation: Python 3.9 or later, standard library only, no network.
 
-## Documentation
+| Command | Does |
+|---|---|
+| `init` | create a workspace: `STRATEGY.md`, `STATUS.md`, and the core folders |
+| `new TYPE "title"` | create an artifact from its template, named by the contract's rules |
+| `validate` | check every artifact against the contract: names, headers, sections, status values, links |
+| `status` | pipeline health from header dates, and what needs attention |
+| `gate SPEC` | the pre-commission gate |
+| `seeds suggest "..."` | suggest seeds for a situation |
 
-| Doc | What It Covers |
-|-----|---------------|
-| [Methodology](docs/methodology.md) | The full Git for Strategy methodology |
-| [Pipeline Reference](docs/pipeline.md) | Detailed phase-by-phase reference |
-| [Measured Outcomes](docs/measured-outcomes.md) | Evidence from 25 real releases |
-| [Seeds Reference](docs/seeds-reference.md) | Quick reference for all 13 patterns |
+The Claude Code commands call it, so a workspace looks the same whoever wrote it.
 
----
+## Without Claude Code
 
-## Requirements
+The files work anywhere. Point your agent's rules file — `AGENTS.md` or your tool's equivalent — at `STRATEGY.md`, and use `gfs.py` from a terminal. [docs/adapters.md](docs/adapters.md) covers other agents, the Dojo Genesis OpenClaw plugin, and the optional Dojo Genesis MCP server.
 
-Git for Strategy is a skill + template package — no runtime dependencies. You need:
+## Example
 
-- An AI coding tool that supports skills or slash commands (Claude Code, Cowork, Cursor, VS Code, Windsurf, Gemini CLI)
-- `bash` for the initialization script (`scripts/init-strategy.sh`)
-- Any text editor for manual workspace setup (the scripts just create directories and seed files)
+[examples/native-or-web](examples/native-or-web/STRATEGY.md) is a small illustrative workspace carried from tension to seeds. It is not a real project. CI checks that it passes `gfs.py validate --strict`.
+
+## Seeds
+
+Seeds are patterns that grew from real work: foundations of the practice, structure, grounding, deciding, honesty, and execution. Each says where it came from. [Browse them](seeds/README.md), or run `/seed`.
+
+## Not measured
+
+Earlier versions of this README led with timeline and hours-saved figures. They were not measured against a baseline, so version 2.0.0 removed them.
+
+The effect of this method on speed, cost, or quality has not been measured. A fair measurement would compare matched pieces of work done with and without the pipeline, with the comparison and the success measure written down before the first run, and would publish the result whichever way it came out. If you run one, open an issue with your method and results, null results included.
+
+## Lineage
+
+Git for Strategy grew out of the Dojo Genesis practice: *begin with a tension, not a solution*. Its human-agency commitments come from the lineage that practice names for itself — beginner's mind, understanding before help, self-definition, and liberation psychology's insistence that structures re-center the people they serve. The seeds [Partnership, Not Autopilot](seeds/partnership-not-autopilot.md) and [Liberation Psychology](seeds/liberation-psychology.md) carry the sources.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute skills, seeds, and platform guides.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Changes to the contract start as a scout and a decision, the same as anything else.
 
 ## License
 
-MIT
+Apache-2.0. See [LICENSE](LICENSE).
 
----
-
-*Built from 25 releases of real software. A [Dojo Genesis](https://github.com/DojoGenesis) project by Tres Pies Design.*
+Built by Dojo Genesis at TresPies LLC. Claude Code is a product of Anthropic; Git for Strategy is an independent project, not affiliated with or endorsed by Anthropic.

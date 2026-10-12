@@ -1,21 +1,43 @@
-# Seed: Patient Learning
+---
+name: patient-learning
+tagline: Use method to keep learning from turning into a rabbit hole.
+group: foundations
+triggers:
+  - I'm overwhelmed
+  - learning something new
+  - unfamiliar codebase
+  - rabbit hole
+  - I don't know where to start
+  - stuck
+---
 
-**Confidence:** Medium-High — validated in onboarding
+# Patient Learning
 
-## Trigger
-When learning something new under time pressure. When the gap between "I don't know this" and "I need to use this" feels paralyzing.
+*Use method to keep learning from turning into a rabbit hole.*
 
-## Pattern
-Methodology prevents rabbit holes. Learn at the pace of understanding, but use structure to prevent wandering. The seven-step debugging methodology, the five-phase research protocol — these aren't bureaucracy, they're guardrails for learning.
+## What it is
 
-## Steps
-1. Acknowledge what you don't know (be specific)
-2. Pick a structured approach (don't improvise learning)
-3. Follow the steps even when tempted to skip ahead
-4. Validate understanding before moving to the next concept
+When you learn under pressure, structure is what keeps curiosity from wandering. A method — a debugging sequence, a research protocol — is a guardrail for learning, not bureaucracy. There is no "behind."
 
-## Evidence
-Agents following the structured debugging skill resolved issues in 40% fewer iterations than agents who improvised.
+## Why it matters
 
-## Anti-Pattern
-Tutorial hell — learning without doing. Or cowboy learning — doing without understanding.
+Without structure, pressure produces either endless tutorials or confident guessing. Both feel like progress and are not.
+
+## The pattern
+
+1. Say specifically what you do not know.
+2. Pick a structured approach before you start. Don't improvise the learning.
+3. Follow the steps when you are tempted to skip ahead.
+4. Check your understanding before moving to the next idea.
+
+## Revisit when
+
+You are onboarding to unfamiliar code, tools, or a new domain. A learning task has run far past its plan.
+
+## What it refuses
+
+Tutorial hell, which is learning without doing. And cowboy learning, which is doing without understanding.
+
+## Grew from
+
+The patient-learning protocol in the Dojo Genesis practice, itself drawn from beginner's mind.

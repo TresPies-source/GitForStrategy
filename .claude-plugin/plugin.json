@@ -1,26 +1,22 @@
 {
   "name": "git-for-strategy",
-  "version": "1.0.0",
-  "description": "Strategic thinking as installable infrastructure — 21 skills, 13 seed patterns, 5-phase pipeline. Give your AI agent the discipline to explore, decide, execute, track, and learn.",
+  "version": "2.0.0",
+  "description": "Keep strategic work in files: scout the tension, record the decision in the decider's own words, spec it, commission it, and learn from what shipped. The pipeline contract for Dojo Genesis practice.",
   "author": {
-    "name": "Tres Pies Design",
-    "email": "cruz@trespiesdesign.com"
+    "name": "Dojo Genesis"
   },
-  "metadata": {
-    "homepage": "https://github.com/TresPies-source/GitForStrategy",
-    "repository": "https://github.com/TresPies-source/GitForStrategy",
-    "keywords": [
-      "strategic-thinking",
-      "ai-strategy",
-      "ai-agents",
-      "planning-with-files",
-      "mcp",
-      "methodology",
-      "decision-making",
-      "ai-workflow",
-      "specification",
-      "retrospective",
-      "seed-patterns"
-    ]
-  }
+  "homepage": "https://github.com/DojoGenesis/git-for-strategy",
+  "repository": "https://github.com/DojoGenesis/git-for-strategy",
+  "license": "Apache-2.0",
+  "keywords": [
+    "strategy",
+    "decision-making",
+    "decision-records",
+    "adr",
+    "specification",
+    "retrospective",
+    "planning-with-files",
+    "claude-code",
+    "dojo-genesis"
+  ]
 }

@@ -1,21 +1,43 @@
-# Seed: Cost Consciousness
+---
+name: cost-consciousness
+tagline: Treat cost as a design constraint, not a bill to fix later.
+group: foundations
+triggers:
+  - this is too expensive
+  - budget
+  - resource constraint
+  - can we afford
+  - cost
+  - token spend
+---
 
-**Confidence:** High — validated in production
+# Cost Consciousness
 
-## Trigger
-When resource constraints feel limiting. When scaling seems blocked by cost.
+*Treat cost as a design constraint, not a bill to fix later.*
 
-## Pattern
-Treat cost as a design constraint, not a problem to solve later. Constraints sharpen thinking. The cheapest solution that works is often the most elegant.
+## What it is
 
-## Steps
-1. Make cost visible (measure before optimizing)
-2. Set cost budgets alongside feature budgets
-3. Design for the constraint, not around it
-4. Monitor cost as a first-class metric
+Make cost visible while you design, and design within it. A constraint named early sharpens choices. One discovered late forces panic.
 
-## Evidence
-Infrastructure costs reduced 40% by treating cost as a constraint during design phase rather than optimizing after deployment.
+## Why it matters
 
-## Anti-Pattern
-Cost denial — designing without constraints, then panic-optimizing when bills arrive. Or cost paralysis — refusing to spend anything, which blocks all progress.
+Cost found after launch gets cut under pressure, and what gets cut is often what mattered. Cost named during design tends to shape a simpler system.
+
+## The pattern
+
+1. Make cost visible. Measure before you try to reduce it.
+2. Set a cost budget next to the feature budget.
+3. Design for the constraint, not around it.
+4. Count the whole cost: people's attention and the maintenance to come, not only the bill.
+
+## Revisit when
+
+You scope new infrastructure. A design assumes something "will be cheap enough." A bill surprises someone.
+
+## What it refuses
+
+Cost denial: designing without constraints, then panicking when the bills arrive. And cost paralysis: refusing to spend anything, which blocks all progress.
+
+## Grew from
+
+The cost discipline of the Dojo Genesis practice. An earlier version of this seed claimed a savings percentage that was never measured; it has been removed.
